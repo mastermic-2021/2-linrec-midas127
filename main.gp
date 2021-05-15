@@ -15,7 +15,7 @@ decode(v) = {
 \\b=u27^5;
 \\if(a==b, print("oui"), print("non"));
 
-logd(a) = {
+logd(a) = { \\log discret dans le corps fini, assez facile car le cardinal est petit.
 	i=0;
 	g=1;
 	r=0;
@@ -30,17 +30,17 @@ delogd(v) = {
 
 P='x^40+'x+u27;
 
-M=matcompanion(P)~;
+M=matcompanion(P)~; \\Un LFSR est une suite récurrente, que l'on itère avec de l'exponentielle rapide sur la matrice companion
 
 \\print(M);
 
-B=M^32;
+B=M^32;  \\Exponentielle plus facile avec la factorisation de n que directement (et puis pas besoin d'exp rapide, il me semble que parigp s'en charge tout seul)
 C=B^7;
 D=C^47;
 E=D^71;
 F=E^239;
 G=F^5203391;
-Inverse=G^(-1);
+Inverse=G^(-1); \\On calcule la matrice inverse
 
 \\print(Id);
 \\print(G);
